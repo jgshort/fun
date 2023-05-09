@@ -120,3 +120,6 @@ static const char * fun_instruction_to_string(fun_il_instruction op) {
   }
 }
 
+void fun_translate(const fun_options * options) {
+  (void)options;
+}

@@ -15,7 +15,8 @@ typedef struct fun_options {
   fun_logging_verbosity verbosity;  /* -v [1..31] */
   bool print_help;                  /* -h */
   bool intermediate;                /* -IL */
-  char padding[2];
+  bool translate;                   /* -IT */
+  char padding[1];
 } fun_options;
 
 void fun_options_print_help(FILE * /* fs */);

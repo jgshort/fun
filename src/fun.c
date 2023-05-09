@@ -24,6 +24,8 @@ int main(int argc, char ** argv) {
 
   if(options.intermediate) {
     fun_il_lex(&options);
+  } else if(options.translate) {
+    fun_translate(&options);
   }
 
   return EXIT_SUCCESS;

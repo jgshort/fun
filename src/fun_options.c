@@ -19,6 +19,7 @@ void fun_options_print_help(FILE * fs) {
   fprintf(fs, "\t-o [path] : Output file path. Required. Existing output will be overwritten.\n");
   fprintf(fs, "\t-v [1 - 5]: Logging verbosity; default is ERROR. Optional.\n");
   fprintf(fs, "\t-IL       : compile [input] to intermediate assembly\n");
+  fprintf(fs, "\t-IT       | translate [input] to C\n");
 }
 
 fun_ex_errno fun_options_parse(int argc, char ** argv, fun_options * options) {
@@ -37,6 +38,8 @@ fun_ex_errno fun_options_parse(int argc, char ** argv, fun_options * options) {
           {
             if(argv[i][2] == 'L') { /* -IL */
               options->intermediate = true;
+            } else if(argv[i][2] == 'T') { /* -IT */
+              options->translate = true;
             }
           }
           break;
@@ -90,6 +93,8 @@ fun_ex_errno fun_options_parse(int argc, char ** argv, fun_options * options) {
     fprintf(stdout, "\n");
     if(options->intermediate ) {
       fprintf(stdout, "Assembling IL [%s] to [%s]\n", options->in_file, options->out_file);
+    } else if(options->translate) {
+      fprintf(stdout, "Translating [%s] to [%s]\n", options->in_file, options->out_file);
     }
   }
 
