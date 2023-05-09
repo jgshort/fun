@@ -20,14 +20,14 @@ int main(int argc, char ** argv) {
   setlocale(LC_ALL, "");
 
   fun_options options = { 0 };
-  if(fun_options_parse(argc, argv, &options) != FUN_EX_SUCCESS) {
-    exit(EXIT_FAILURE);
-  }
+  if(fun_options_parse(argc, argv, &options) != FUN_EX_SUCCESS) { goto err0; }
 
   if(options.intermediate) {
     fun_il_lex(&options);
   }
 
   return EXIT_SUCCESS;
+err0:
+  return EXIT_FAILURE;
 }
 
