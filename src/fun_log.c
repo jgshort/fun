@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "fun_log.h"
+#include "../include/fun_log.h"
 
 fun_logging_verbosity fun_set_logging_verbosity(long int in, fun_logging_verbosity verbosity) {
   long int in_to_flv = FLV_UNSET;

@@ -6,13 +6,13 @@
 #include <locale.h>
 #include <errno.h>
 
-#include "config.h"
-#include "fun_bad.h"
-#include "fun_error.h"
-#include "fun_string.h"
-#include "fun_log.h"
-#include "fun_options.h"
-#include "fun_il.h"
+#include "../config.h"
+#include "../include/fun_bad.h"
+#include "../include/fun_error.h"
+#include "../include/fun_string.h"
+#include "../include/fun_log.h"
+#include "../include/fun_options.h"
+#include "../include/fun_il.h"
 
 int main(int argc, char ** argv) {
   atexit(fun_ex_shutdown);

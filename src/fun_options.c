@@ -1,3 +1,4 @@
+#define _POSIX_C_SOURCE 200809L
 #include <assert.h>
 #include <string.h>
 #include <stdlib.h>
@@ -6,10 +7,10 @@
 #include <unistd.h>
 
 #include "config.h"
-#include "fun_error.h"
-#include "fun_string.h"
-#include "fun_log.h"
-#include "fun_options.h"
+#include "../include/fun_error.h"
+#include "../include/fun_string.h"
+#include "../include/fun_log.h"
+#include "../include/fun_options.h"
 
 void fun_options_print_help(FILE * fs) {
   fprintf(fs, "%s %s\n", PACKAGE_NAME, PACKAGE_VERSION);
@@ -23,9 +24,9 @@ void fun_options_print_help(FILE * fs) {
 }
 
 fun_ex_errno fun_options_parse(int argc, char ** argv, fun_options * options) {
-  if(argc <= 1) { 
+  if(argc <= 1) {
     fun_options_print_help(stderr);
-    exit(EXIT_FAILURE); 
+    exit(EXIT_FAILURE);
   }
 
   const char * verbosity_argument = NULL;
@@ -60,11 +61,11 @@ fun_ex_errno fun_options_parse(int argc, char ** argv, fun_options * options) {
             errno = 0;
             verbosity_argument = argv[i + 1];
             long int verbosity = strtol(argv[i + 1], NULL, 0);
-            if(errno == ERANGE || verbosity <= FLV_UNSET || verbosity > FLV_EOE) { 
+            if(errno == ERANGE || verbosity <= FLV_UNSET || verbosity > FLV_EOE) {
               goto err3;
             }
             errno = 0;
-            options->verbosity = fun_set_logging_verbosity(verbosity, options->verbosity); 
+            options->verbosity = fun_set_logging_verbosity(verbosity, options->verbosity);
           }
           break;
         default:

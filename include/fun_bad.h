@@ -3,6 +3,10 @@
 #ifndef FUN_BAD__H
 #define FUN_BAD__H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Shamelessly borrowed from git */
 
 #define NOPE(func) nope_##func##_is_banned
@@ -38,6 +42,10 @@
 #define asctime(t) NOPE(asctime)
 #undef asctime_r
 #define asctime_r(t, buf) NOPE(asctime_r)
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* FUN_BAD__H */
 

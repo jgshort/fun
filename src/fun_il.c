@@ -4,9 +4,9 @@
 #include <string.h>
 #include <ctype.h>
 
-#include "fun_options.h"
-#include "fun_io.h"
-#include "fun_il.h"
+#include "../include/fun_options.h"
+#include "../include/fun_io.h"
+#include "../include/fun_il.h"
 
 #define IL_CHECK(in, inst) (memcmp((in), inst, (sizeof(inst) - 1)) == 0)
 
@@ -49,7 +49,7 @@ void fun_il_lex(const fun_options * options) {
 
   const char * c = (const char *)buf;
   const char * buf_end = c + buf_len;
- 
+
   long int row = 1;
   long int col = 1;
 
@@ -57,13 +57,13 @@ void fun_il_lex(const fun_options * options) {
   fun_instruction_code * code = calloc(code_len, sizeof * code);
   fun_instruction_code * code_end = code + code_len;
   fun_instruction_code * current = code;
-  
+
   do {
     IL_CONSUME_WS(c);
 
     if(IL_CHECK(c, "nop")) { goto il_nop; }
     if(IL_CHECK(c, "mov")) { goto il_mov; }
-    if(IL_CHECK(c, "xor")) { goto il_xor; } 
+    if(IL_CHECK(c, "xor")) { goto il_xor; }
     if(IL_CHECK(c, "sys")) { goto il_sys; }
     goto next;
 
@@ -98,7 +98,7 @@ next:
 
   fun_instruction_code * output = code;
   do {
-    fprintf(stdout, "FOUND %s\n", fun_instruction_to_string(output->op)); 
+    fprintf(stdout, "FOUND %s\n", fun_instruction_to_string(output->op));
     output++;
   } while(output < code_end);
 
@@ -123,3 +123,4 @@ static const char * fun_instruction_to_string(fun_il_instruction op) {
 void fun_translate(const fun_options * options) {
   (void)options;
 }
+

@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <errno.h>
 
-#include "fun_bad.h"
-#include "fun_error.h"
+#include "../include/fun_bad.h"
+#include "../include/fun_error.h"
 
 #define FUN_EX_MAX_ALLOCS 2048
 
@@ -31,7 +31,7 @@ fun_ex_errno fun_new_ex(long line, const char * file, const char * msg, const fu
 
   assert(fun_ex_next_alloc < FUN_EX_MAX_ALLOCS);
   if(fun_ex_next_alloc >= FUN_EX_MAX_ALLOCS) { abort(); }
-  
+
   fun_ex_allocated_exes[fun_ex_next_alloc] = temp;
   fun_ex_next_alloc++;
 

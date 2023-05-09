@@ -1,6 +1,10 @@
 #ifndef FUN_IO__H
 #define FUN_IO__H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdio.h>
 
 /* From: http://www.zlib.net/zlib_how.html */
@@ -23,6 +27,10 @@
 
 int fun_read_file_to_char_buffer(FILE * /* fp */, char ** /* source */, size_t * /* len */);
 void fun_read_path_to_void_buffer(const char * /* file_path */, void ** /* out_buf */, size_t * /* out_buf_len */);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* FUN_IO__H */
 
